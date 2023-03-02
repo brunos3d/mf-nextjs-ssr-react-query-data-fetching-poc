@@ -16,9 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@acme/domain": ["libs/domain/src/index.ts"],
-      "@host/*": ["apps/host/*"],
       "@header/*": ["apps/header/*"],
-      "@plp/*": ["apps/plp/*"]
+      "@host/*": ["apps/host/*"],
+      "@plp/*": ["apps/plp/*"],
+      "@button/*": ["apps/button/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -9,6 +9,9 @@ const PLP_APP_URL =
 const HEADER_APP_URL =
   process.env.NEXT_PUBLIC_HEADER_APP_URL || 'http://localhost:3002';
 
+const BUTTON_APP_URL =
+  process.env.NEXT_PUBLIC_BUTTON_APP_URL || 'http://localhost:3003';
+
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
 const remotes = (isServer) => {
@@ -17,6 +20,7 @@ const remotes = (isServer) => {
   return {
     plp: `plp@${PLP_APP_URL}/_next/static/${location}/remoteEntry.js`,
     header: `header@${HEADER_APP_URL}/_next/static/${location}/remoteEntry.js`,
+    button: `button@${BUTTON_APP_URL}/_next/static/${location}/remoteEntry.js`,
   };
 };
 

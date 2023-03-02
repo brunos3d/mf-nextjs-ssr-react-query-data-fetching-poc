@@ -18,3 +18,7 @@ declare module 'plp/ProductCard' {
 declare module 'header/Header' {
   export * from '@header/components/Header';
 }
+
+declare module 'button/Button' {
+  export * from '@button/components/Button/index.tsx';
+}

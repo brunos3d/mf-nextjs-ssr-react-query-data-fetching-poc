@@ -9,6 +9,13 @@ const Header = dynamic(
   }
 );
 
+const Button = dynamic(
+  () => import('button/Button').then((mod) => mod.Button),
+  {
+    ssr: true,
+  }
+);
+
 const PlpProductsPage = dynamic(
   () => import('plp/ProductsPage').then((mod) => mod.Page),
   {
@@ -39,7 +46,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export function Page() {
   return (
     <StyledPage>
-      <Header />
+      <Header>
+        <Button onClick={() => alert('You clicked on a header button')}>
+          Hello Button
+        </Button>
+      </Header>
+
       <PlpProductsPage color="forestgreen" />
     </StyledPage>
   );

@@ -4,7 +4,3 @@ declare module '*.svg' {
   export const ReactComponent: any;
   export default content;
 }
-
-declare module 'button/Button' {
-  export * from '@button/components/Button/index.tsx';
-}
