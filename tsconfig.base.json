@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@acme/domain": ["libs/domain/src/index.ts"],
+      "@host/*": ["apps/host/*"],
+      "@plp/*": ["apps/plp/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

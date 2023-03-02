@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "mf-data-fetching-poc",
+  "npmScope": "acme",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",

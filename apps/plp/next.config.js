@@ -3,23 +3,6 @@ const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const { dependencies } = require('../../package.json');
 
-const PLP_APP_URL =
-  process.env.NEXT_PUBLIC_PLP_APP_URL || 'http://localhost:3001';
-
-const HEADER_APP_URL =
-  process.env.NEXT_PUBLIC_HEADER_APP_URL || 'http://localhost:3002';
-
-// this enables you to use import() and the webpack parser
-// loading remotes on demand, not ideal for SSR
-const remotes = (isServer) => {
-  const location = isServer ? 'ssr' : 'chunks';
-
-  return {
-    plp: `plp@${PLP_APP_URL}/_next/static/${location}/remoteEntry.js`,
-    header: `header@${HEADER_APP_URL}/_next/static/${location}/remoteEntry.js`,
-  };
-};
-
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
@@ -35,16 +18,20 @@ const nextConfig = {
    * @param {import('webpack').Configuration} config
    * @returns {import('webpack').Configuration}
    */
-  webpack(config, { isServer }) {
+  webpack(config) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'host',
+        name: 'plp',
         filename: 'static/chunks/remoteEntry.js',
-        remotes: remotes(isServer),
+        remotes: {},
         extraOptions: {
           automaticAsyncBoundary: true,
         },
-        exposes: {},
+        exposes: {
+          './ProductsPage': './pages/index.tsx',
+          './ProductList': './components/ProductList/index.tsx',
+          './ProductCard': './components/ProductCard/index.tsx',
+        },
         shared: {
           '@tanstack/react-query': {
             requiredVersion: false,
