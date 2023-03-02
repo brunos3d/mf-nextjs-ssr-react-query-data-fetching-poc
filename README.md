@@ -14,9 +14,12 @@ Run the following command to start the Next.js apps:
 nx run-many --target=serve --all --skip-nx-cache --verbose --parallel=4
 ```
 
-Go to
+Browse to the following URLs:
 
-http://localhost:3000/ (advanced federation, main host app)
-http://localhost:3001/ (advanced federation)
-http://localhost:3002/ (basic federation)
-http://localhost:3003/ (basic federation)
+- http://localhost:3000/ (advanced federation, main host app)
+
+- http://localhost:3001/ (advanced federation)
+
+- http://localhost:3002/ (basic federation)
+
+- http://localhost:3003/ (basic federation)
