@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import cors from 'nextjs-cors';
 
 import type { PaginatedReponse, Product } from '@acme/domain';
 
@@ -8,6 +9,11 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ProductsResponse>
 ) => {
+  await cors(req, res, {
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+  });
+
   const { skip, limit } = req.query;
 
   const response = await fetch(

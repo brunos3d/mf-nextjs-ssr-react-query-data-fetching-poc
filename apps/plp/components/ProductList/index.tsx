@@ -47,7 +47,7 @@ export function ProductList({ limit = 10, skip = 0 }: Partial<Cursor>) {
       ) : (
         products.map((product) => (
           <ProductCard
-            href={`/products/${product.id}`}
+            href={`${process.env.NEXT_PUBLIC_PLP_URL}/products/${product.id}`}
             product={product}
             key={product.id}
           />

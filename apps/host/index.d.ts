@@ -11,7 +11,10 @@ declare module 'plp/ProductsPage' {
 declare module 'plp/ProductList' {
   export * from '@plp/components/ProductList';
 }
-
 declare module 'plp/ProductCard' {
   export * from '@plp/components/ProductCard';
+}
+
+declare module 'header/Header' {
+  export * from '@header/components/Header';
 }

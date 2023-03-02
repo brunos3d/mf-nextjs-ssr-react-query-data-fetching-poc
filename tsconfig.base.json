@@ -17,6 +17,7 @@
     "paths": {
       "@acme/domain": ["libs/domain/src/index.ts"],
       "@host/*": ["apps/host/*"],
+      "@header/*": ["apps/header/*"],
       "@plp/*": ["apps/plp/*"]
     }
   },

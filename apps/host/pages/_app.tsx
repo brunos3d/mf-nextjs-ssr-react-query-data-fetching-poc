@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
-import './styles.css';
 
 import { queryClient } from '../services/queryClient';
 import { GlobalStyles } from '../components/GlobalStyles';

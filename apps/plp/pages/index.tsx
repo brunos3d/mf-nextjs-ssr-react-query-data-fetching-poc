@@ -10,9 +10,9 @@ const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px;
-  padding: 5px;
-  border: 4px dashed orangered;
+  margin: 15px;
+  padding: 15px;
+  border: 4px dashed ${(props) => props.color || 'orangered'};
   border-radius: 0.25rem;
 `;
 
@@ -22,8 +22,11 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const limit = query?.limit ? +query.limit : 10;
   const skip = query?.skip ? +query.skip : 0;
 
-  await queryClient.prefetchQuery(['products', limit, skip], {
-    initialData: await fetchProducts({ limit, skip }),
+  const products = await fetchProducts({ limit, skip });
+
+  await queryClient.prefetchQuery(['products', limit, skip], () => products, {
+    initialData: products,
+    staleTime: 5000, // data will be considered stale after 5 seconds
   });
 
   return {
@@ -33,8 +36,12 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   };
 }
 
+export interface PageProps {
+  color?: string;
+}
+
 // note that products data are not extracted from the page props
-export function Page() {
+export function Page(props?: PageProps) {
   const router = useRouter();
 
   const limit = router.query.limit ? +router.query.limit : 10;
@@ -46,7 +53,7 @@ export function Page() {
    * Note: The corresponding styles are in the ./index.styled-components file.
    */
   return (
-    <StyledPage>
+    <StyledPage color={props?.color}>
       <ProductList limit={limit} skip={skip} />
     </StyledPage>
   );
